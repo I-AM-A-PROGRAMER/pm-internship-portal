@@ -3,7 +3,6 @@
 
 ![Status](https://img.shields.io/badge/status-Prototype-brightgreen)
 ![SIH 2025](https://img.shields.io/badge/SIH-2025-blue)
-![Mobile Compatible](https://img.shields.io/badge/Mobile--Friendly-blueviolet)
 ![Easy Integration](https://img.shields.io/badge/Integration-Simple-lightgrey)
 
 ---
