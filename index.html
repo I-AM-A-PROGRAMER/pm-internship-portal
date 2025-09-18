@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Internship Scheme</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header id="app-header" class="app-header" style="display: none;">
+            <h1 class="logo">PM Internship Scheme</h1>
+            <nav>
+                <span id="welcome-user"></span>
+                <button id="dashboard-tab-btn" class="nav-tab active">Dashboard</button>
+                <button id="find-internship-tab-btn" class="nav-tab">Find Your Internship</button>
+                <button id="applied-tab-btn" class="nav-tab">Applied Internships</button>
+                <button id="logout-btn">Logout</button>
+                <button id="dark-mode-toggle" class="dark-mode-toggle"><i class="fa-solid fa-moon"></i></button>
+            </nav>
+        </header>
+
+        <main id="page-container" style="display: none;">
+            <div id="dashboard-page" class="page active">
+                <div id="internship-list" class="internship-list-container"></div>
+            </div>
+            
+            <div id="form-page" class="page">
+                <div class="form-wrapper">
+                    <div class="form-container card-ui">
+                        <header>
+                            <h1>Find Your Perfect Internship ✨</h1>
+                            <p>Enter your details to get personalized recommendations.</p>
+                        </header>
+                        <form id="recommendation-form">
+                            <div class="form-group">
+                                <label>Preferred Location(s)</label>
+                                <div class="custom-select" id="location-select">
+                                    <div class="select-selected">Select Locations...</div>
+                                    <div class="select-items select-hide"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Skills</label>
+                                <div class="custom-select" id="skills-select">
+                                    <div class="select-selected">Select Skills...</div>
+                                    <div class="select-items select-hide">
+                                        <input type="text" placeholder="Search skills..." class="select-search">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Stipend</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="stipend" value="yes" checked> Yes</label>
+                                    <label><input type="radio" name="stipend" value="no"> No</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">Find My Internships</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="applied-page" class="page">
+                 <div class="page-wrapper">
+                    <div class="card-ui">
+                        <h2>Your Applications</h2>
+                        <div id="applied-internships-list"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="loading-page" class="page">
+                 <div class="page-wrapper">
+                    <div class="card-ui loading-card">
+                        <div class="loader"></div>
+                        <h2>Analyzing Your Profile...</h2>
+                        <p>Our AI is finding the best opportunities for you!</p>
+                    </div>
+                </div>
+            </div>
+            <div id="results-page" class="page">
+                <div class="page-wrapper">
+                    <div class="card-ui results-card">
+                        <header>
+                            <h1>Top Recommendations For You! 🚀</h1>
+                            <p>Based on your profile, we suggest these top 3 internships.</p>
+                        </header>
+                        <div id="recommendation-results-list"></div>
+                        <button id="start-over-btn" class="submit-btn">Start Over</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="auth-modal-backdrop" class="modal-backdrop">
+        <div id="auth-modal" class="modal-dialog auth-modal">
+            <div id="login-view">
+                <h2 class="modal-title">Login</h2>
+                <form id="login-form">
+                    <div class="form-group"><label>Username</label><input type="text" id="login-username" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="login-password" required></div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+                <p class="switch-view">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            </div>
+            <div id="signup-view" style="display: none;">
+                <h2 class="modal-title">Sign Up</h2>
+                <form id="signup-form">
+                    <div class="form-group"><label>Full Name</label><input type="text" id="signup-fullname" required></div>
+                    <div class="form-group"><label>Username</label><input type="text" id="signup-username" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="signup-password" required></div>
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+                <p class="switch-view">Already have an account? <a href="#" id="show-login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="apply-modal-backdrop" class="modal-backdrop" style="display: none;">
+        <div class="modal-dialog large">
+            <button class="close-btn">&times;</button>
+            <div id="apply-modal-content"></div>
+        </div>
+    </div>
+    
+    <div id="toast-notification" class="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>
